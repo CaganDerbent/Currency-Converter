@@ -36,15 +36,15 @@ const App = () => {
 
   async function fetchData() {
 
-    //const KEY = process.env.REACT_APP_API_KEY;
-    //const HOST = process.env.REACT_APP_API_HOST;
+    const KEY = import.meta.env.VITE_API_KEY;
+    const HOST = import.meta.env.VITE_API_HOST;
  
     const url = `https://currency-converter18.p.rapidapi.com/api/v1/convert?from=${tempfrom}&to=${totemp}&amount=${tempamount}`;
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': 'd6dafea497mshdee72e26d5b0a6bp1c3324jsn55d76122ad79',
-        'X-RapidAPI-Host': 'currency-converter18.p.rapidapi.com'
+        'X-RapidAPI-Key': KEY,
+        'X-RapidAPI-Host': HOST
       }
     };
     
@@ -55,7 +55,6 @@ const App = () => {
      
       const response = await fetch(url, options);
       const result1 = await response.text();
-      console.log(result1);
       setData(result1)
     
       const jsonData = `${result1}`;
